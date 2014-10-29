@@ -1,0 +1,22 @@
+name: GroupingPlugin
+main: com.github.mourthag.MainGroupingPlugin.Main
+author: Mourthag
+version: 1.0.0
+
+commands:
+    invite:
+       aliases: [inv]
+       usage: /invite [player]
+       description: Invite a player into your group, the player can accept or decline your invite
+    createGroup:
+       aliases: [crGroup]
+       usage: /createGroup
+       description: Creates a private Group for you and your Friends
+    leaveGroup:
+       aliases: [lvGroup]
+       usage: /leaveGroup
+       description: Leaves the current group and deletes it if you´re the admin
+    msgGroup
+       aliases[p]
+       usage: /msgGroup <message>
+       description: Sends a message to your Group members
