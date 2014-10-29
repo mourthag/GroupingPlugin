@@ -17,16 +17,29 @@ public class Group {
 	}
 	
 	//add a Player to the Group
-	public boolean addPlayer(Player PToAdd)
+	public boolean addPlayer(Player p)
 	{
 		if(member.size() < 4)
 		{
-			member.add(PToAdd);
+			member.add(p);
 			return true;
 		}
 		else
 		{
 			return false;
+		}
+	}
+	
+	public void removePlayer(Player p)
+	{
+		try
+		{
+			member.remove(p);
+			sendMessage(p.getName() + "left your Group");
+		}
+		catch(Exception e)
+		{
+			
 		}
 	}
 	

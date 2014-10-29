@@ -6,8 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerLevelChangeEvent;
 
-import com.github.mourthag.MainGroupingPlugin.Group;
-import com.github.mourthag.MainGroupingPlugin.Main;
+import com.github.mourthag.MainGroupingPlugin.*;
 
 public class XPEventListener implements Listener
 {
@@ -16,16 +15,16 @@ public class XPEventListener implements Listener
 	public XPEventListener(Main main)
 	{
 		mainPlugin = main;
+		mainPlugin.getServer().getPluginManager().registerEvents(this, mainPlugin);
 	}
 	
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onLVLChange(PlayerLevelChangeEvent e)
 	{
-		mainPlugin.getLogger().info("LVLup");
 		Player p = e.getPlayer();
 		Group curGroup = mainPlugin.gHandler.findGroupByPlayer(p);
-		if(curGroup != null)
-			curGroup.sendMessage(p.getName() + "is now Level" + e.getNewLevel() + "!");
+		if(curGroup != null && e.getNewLevel() > e.getOldLevel())
+			curGroup.sendMessage(p.getName() + " is now Level " + e.getNewLevel() + "!");
 	}
 
 }

@@ -56,9 +56,8 @@ public class GroupManCommand implements CommandExecutor
 					}
 					else
 					{
-						curGroup.member.remove(p);
+						curGroup.removePlayer(p);
 						p.sendMessage(ChatColor.BLUE + "You left your Group");
-						curGroup.sendMessage(p.getName() + "left your Group");
 						return true;
 					}
 				}
