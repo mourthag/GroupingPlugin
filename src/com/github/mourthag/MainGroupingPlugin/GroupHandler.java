@@ -7,7 +7,7 @@ import java.util.List;
 
 public class GroupHandler 
 {
-	List<Group> activeGroups = new ArrayList<Group>();
+	public List<Group> activeGroups = new ArrayList<Group>();
 	
 	public GroupHandler()
 	{
@@ -34,6 +34,16 @@ public class GroupHandler
 		Group addedGroup = new Group(creator);
 		activeGroups.add(addedGroup);
 		addedGroup.sendMessage("Group created");
+	}
+	
+	public Group findGroupByPlayer(Player p)
+	{
+		for(Group g: activeGroups)
+		{
+			if(g.contains(p))
+				return g;
+		}
+		return null;
 	}
 
 }

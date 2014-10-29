@@ -54,4 +54,12 @@ public class Group {
 			p.giveExp(individualXP);
 		}
 	}
+	
+	public boolean contains(Player p)
+	{
+		if(member.contains(p))
+			return true;
+		else
+			return false;
+	}
 }
