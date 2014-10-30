@@ -17,7 +17,6 @@ public class InviteEvent extends Event
 	 
 	public InviteEvent(Main main, Player source, Player target, Group srcGroup)
 	{
-		main.getLogger().info("4");
 		inviter = source;
 		invited = target;
 		invGroup = srcGroup;

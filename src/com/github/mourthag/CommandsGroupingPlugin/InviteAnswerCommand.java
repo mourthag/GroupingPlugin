@@ -24,7 +24,8 @@ public class InviteAnswerCommand implements CommandExecutor{
 		Player p;
 		if(sender instanceof Player)
 		{
-			p = (Player)sender;		
+			p = (Player)sender;	
+			mainPlugin.getLogger().info(mainPlugin.invHandler.findByPlayer(p).p.getName());
 			InvitedPlayer invP = mainPlugin.invHandler.findByPlayer(p);
 			
 			if(invP != null)

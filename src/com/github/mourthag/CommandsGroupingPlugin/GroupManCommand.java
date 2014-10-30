@@ -84,11 +84,8 @@ public class GroupManCommand implements CommandExecutor
 								Group otherGroup = mainPlugin.gHandler.findGroupByPlayer(inv);
 								if(inv != null && otherGroup == null)
 								{
-									mainPlugin.getLogger().info("1");
 									InviteEvent invite = new InviteEvent(mainPlugin, p, inv, curGroup);
-									mainPlugin.getLogger().info("2");
 									mainPlugin.getServer().getPluginManager().callEvent(invite);
-									mainPlugin.getLogger().info("3");
 								}
 								else if(inv == null)
 								{

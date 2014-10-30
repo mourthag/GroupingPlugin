@@ -22,13 +22,13 @@ public class InviteEventListener implements Listener{
 	@EventHandler
 	public void onInvite(InviteEvent e)
 	{
-		mainPlugin.getLogger().info("5");
 		Player source = e.getInviter();
 		Player target = e.getInvited();
 		Group srcGroup = e.getGroup();
 		
 		target.sendMessage(ChatColor.BLUE + source.getName() + " wants you to join your Group");
 		
+		mainPlugin.getLogger().info("Hier");
 		mainPlugin.invHandler.addPlayer(target, e);
 	}
 }

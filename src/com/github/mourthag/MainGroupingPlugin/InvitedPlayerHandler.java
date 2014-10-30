@@ -10,39 +10,37 @@ import com.github.mourthag.EventsGroupingPlugin.InviteEvent;
 public class InvitedPlayerHandler 
 {
 	public List<InvitedPlayer> invitedPlayers;
+	static Main mainPlugin;
 	
-	public InvitedPlayerHandler()
+	public InvitedPlayerHandler(Main main)
 	{
 		invitedPlayers = new ArrayList<InvitedPlayer>();
+		mainPlugin = main;
 	}
 	
 	public void addPlayer(Player p, InviteEvent e)
 	{
 		removePlayer(p);
 		invitedPlayers.add(new InvitedPlayer(p, e));
+		mainPlugin.getLogger().info("Joho");
 	}
 	
 	public void removePlayer(Player p)
 	{
-		if(findByPlayer(p) != null)
-		{
-			invitedPlayers.remove(p);
-		}
-		
+		invitedPlayers.remove(p);
+		mainPlugin.getLogger().info("Test");
 	}
 	
 	public InvitedPlayer findByPlayer( Player p)
 	{
-		if(invitedPlayers.contains(p))
-		{
-			for(int i = 0; i < invitedPlayers.size(); i++)
+		mainPlugin.getLogger().info("Schleife");
+			for(InvitedPlayer curp: invitedPlayers)
 			{
-				if(invitedPlayers.get(i).p == p)
+				if(curp.p == p)
 				{
-					return invitedPlayers.get(i);
+					return curp;
 				}
 			}
-		}
 		return null;
 	}
 }

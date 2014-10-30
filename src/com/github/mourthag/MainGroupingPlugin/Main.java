@@ -14,8 +14,9 @@ public class Main extends JavaPlugin
 	{
 		new XPEventListener(this);
 		new PlayerEventListener(this);
+		new InviteEventListener(this);
 		gHandler = new GroupHandler();
-		invHandler = new InvitedPlayerHandler();
+		invHandler = new InvitedPlayerHandler(this);
 		this.getLogger().info("Grouping Plugin v1.0.0 enabled");
 		this.getLogger().info("Author: Mourthag");
 		setCommands();
