@@ -6,6 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.github.mourthag.EventsGroupingPlugin.InviteEvent;
 import com.github.mourthag.MainGroupingPlugin.Group;
 import com.github.mourthag.MainGroupingPlugin.Main;
 
@@ -64,6 +65,56 @@ public class GroupManCommand implements CommandExecutor
 				else
 				{
 					p.sendMessage(ChatColor.BLUE + "You are not in a Group");
+					return false;
+				}
+			}
+			else if(cmd.getName().equalsIgnoreCase("invite"))
+			{
+				if(args.length > 0)
+				{
+					Group curGroup = mainPlugin.gHandler.findGroupByPlayer(p);
+					
+					if(curGroup != null)
+					{
+						if(curGroup.admin == p)
+						{
+							for(String player: args)
+							{
+								Player inv = mainPlugin.getServer().getPlayer(player);
+								Group otherGroup = mainPlugin.gHandler.findGroupByPlayer(inv);
+								if(inv != null && otherGroup == null)
+								{
+									mainPlugin.getLogger().info("1");
+									InviteEvent invite = new InviteEvent(mainPlugin, p, inv, curGroup);
+									mainPlugin.getLogger().info("2");
+									mainPlugin.getServer().getPluginManager().callEvent(invite);
+									mainPlugin.getLogger().info("3");
+								}
+								else if(inv == null)
+								{
+									p.sendMessage(ChatColor.BLUE + "Player " + player + " not found");
+								}
+								else
+								{
+									p.sendMessage(ChatColor.BLUE + "Player " + inv.getName() + " is already in a Group");
+								}
+							}
+							return true;				
+						}
+						else
+						{
+							p.sendMessage(ChatColor.BLUE + "You are not the admin");
+						}
+					}
+					else
+					{
+						p.sendMessage(ChatColor.BLUE + "You are in no Group");
+						return false;
+					}
+				}
+				else
+				{
+					p.sendMessage(ChatColor.BLUE + "Enter a player");
 					return false;
 				}
 			}

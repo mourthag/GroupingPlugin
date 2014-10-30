@@ -8,12 +8,14 @@ import com.github.mourthag.ListenerGroupingPlugin.*;
 public class Main extends JavaPlugin
 {
 	public GroupHandler gHandler; 
+	public InvitedPlayerHandler invHandler;
 	
 	public void onEnable()
 	{
 		new XPEventListener(this);
 		new PlayerEventListener(this);
 		gHandler = new GroupHandler();
+		invHandler = new InvitedPlayerHandler();
 		this.getLogger().info("Grouping Plugin v1.0.0 enabled");
 		this.getLogger().info("Author: Mourthag");
 		setCommands();
@@ -35,6 +37,7 @@ public class Main extends JavaPlugin
 		getCommand("leaveGroup").setExecutor(new GroupManCommand(this));
 		getCommand("invite").setExecutor(new GroupManCommand(this));
 		getCommand("msgGroup").setExecutor(new GroupIntCommand(this));
-		
+		getCommand("acceptInvite").setExecutor(new InviteAnswerCommand(this));
+		getCommand("declineInvite").setExecutor(new InviteAnswerCommand(this));
 	}
 }

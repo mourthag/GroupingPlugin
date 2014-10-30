@@ -1,5 +1,6 @@
 package com.github.mourthag.ListenerGroupingPlugin;
 
+import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,7 +28,18 @@ public class PlayerEventListener implements Listener
 		
 		if(curGroup != null)
 		{
-			curGroup.removePlayer(p);
+			if(curGroup.admin == p)
+			{
+				curGroup.member.remove(p);
+				curGroup.sendMessage("The admin of the Group dissolved this group", ChatColor.AQUA);
+				mainPlugin.gHandler.deleteGroup(curGroup);
+				p.sendMessage(ChatColor.AQUA + "Group dissolved");
+			}
+			else
+			{
+				curGroup.removePlayer(p);
+				p.sendMessage(ChatColor.BLUE + "You left your Group");
+			}
 		}
 	}
 	
@@ -41,9 +53,6 @@ public class PlayerEventListener implements Listener
 		{
 			curGroup.sendMessage(e.getDeathMessage());
 		}
-		else
-		{
-			e.setDeathMessage("");
-		}
+		e.setDeathMessage(null);
 	}
 }

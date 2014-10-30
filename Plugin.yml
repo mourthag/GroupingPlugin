@@ -5,17 +5,25 @@ author: Mourthag
 commands:
   invite:
     aliases: [inv]
-    usage: invite [player]
+    usage: /invite [player]
     description: Invite a player into your group
   createGroup:
     aliases: [crGroup]
-    usage: createGroup
+    usage: /createGroup
     description: Creates a private Group for you and your Friends
   leaveGroup:
     aliases: [lvGroup]
-    usage: leaveGroup
+    usage: /leaveGroup
     description: Leave the current group
   msgGroup:
     aliases: [p]
-    usage: msgGroup <message>
+    usage: /msgGroup <message>
     description: Sends a message to your Group members
+  acceptInvite:
+    aliases: [aInv]
+    usage: /acceptInvite
+    description: Accepts the current Invite
+  declineInvite:
+    aliases: [dInv]
+    usage: /declineInvite
+    description: Declines the current Invite

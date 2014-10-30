@@ -22,10 +22,12 @@ public class Group {
 		if(member.size() < 4)
 		{
 			member.add(p);
+			sendMessage(p.getName() + " joined the Group");
 			return true;
 		}
 		else
 		{
+			p.sendMessage(ChatColor.BLUE + "Group is full");
 			return false;
 		}
 	}
@@ -43,17 +45,37 @@ public class Group {
 		}
 	}
 	
-	//send Message to all Members
 	public void sendMessage(String message)
 	{
-		sendMessage(message, ChatColor.BLUE);
+		sendMessage(new String[]{message});
 	}
 	
 	public void sendMessage(String message, ChatColor color)
 	{
-		for(Player p: member)
+		sendMessage(new String[]{message}, color);
+	}
+	
+	//send Message to all Members
+	public void sendMessage(String[] message)
+	{
+		sendMessage(message, ChatColor.BLUE);
+	}
+	
+	public void sendMessage(String[] message, ChatColor color)
+	{
+		if(message.length > 0)
 		{
-			p.sendMessage(color + message);
+			String newmsg = "";
+			
+			for(String mPart: message)
+			{
+				newmsg += mPart + " ";
+			}
+			
+			for(Player p: member)
+			{
+				p.sendMessage(color + newmsg);
+			}
 		}
 	}
 	

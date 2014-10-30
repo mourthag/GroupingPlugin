@@ -31,14 +31,20 @@ public class GroupIntCommand implements CommandExecutor {
 				Group curGroup = mainPlugin.gHandler.findGroupByPlayer(p);
 				if(curGroup != null)
 				{
-					if(curGroup.admin.getName() == p.getName())
+					String msg = p.getName() + ": ";					
+					for(String arg : args)
 					{
-						curGroup.sendMessage(p.getName() + ": " + args[0], ChatColor.AQUA);
+						msg += arg + " ";
+					}
+
+					if(curGroup.admin == p)
+					{
+						curGroup.sendMessage(msg, ChatColor.AQUA);
 						return true;
 					}
 					else
 					{
-						curGroup.sendMessage(args[0]);
+						curGroup.sendMessage(msg);
 						return true;
 					}
 				}
