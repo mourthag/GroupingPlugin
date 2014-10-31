@@ -1,6 +1,7 @@
 package com.github.mourthag.MainGroupingPlugin;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.bukkit.ChatColor;
@@ -23,6 +24,7 @@ public class Group {
 		{
 			member.add(p);
 			sendMessage(p.getName() + " joined the Group");
+			p.sendMessage(ChatColor.BLUE + "Use /p to send a message to your group");
 			return true;
 		}
 		else
@@ -37,46 +39,38 @@ public class Group {
 		try
 		{
 			member.remove(p);
-			sendMessage(p.getName() + "left your Group");
+			sendMessage(p.getName() + " left your Group");
 		}
 		catch(Exception e)
 		{
 			
 		}
 	}
-	
-	public void sendMessage(String message)
+	public void removeAllMember()
 	{
-		sendMessage(new String[]{message});
+		Iterator<Player> iter = member.iterator();
+		
+		while(iter.hasNext())
+		{
+			Player p = iter.next();
+			iter.remove();
+			sendMessage(p.getName() + " left your Group");
+		}
 	}
 	
-	public void sendMessage(String message, ChatColor color)
-	{
-		sendMessage(new String[]{message}, color);
-	}
 	
 	//send Message to all Members
-	public void sendMessage(String[] message)
+	public void sendMessage(String message)
 	{
 		sendMessage(message, ChatColor.BLUE);
 	}
 	
-	public void sendMessage(String[] message, ChatColor color)
+	public void sendMessage(String message, ChatColor color)
 	{
-		if(message.length > 0)
+		for(Player p: member)
 		{
-			String newmsg = "";
-			
-			for(String mPart: message)
-			{
-				newmsg += mPart + " ";
-			}
-			
-			for(Player p: member)
-			{
-				p.sendMessage(color + newmsg);
-			}
-		}
+			p.sendMessage(color + message);
+		}	
 	}
 	
 	//divide the XP and share it with the members

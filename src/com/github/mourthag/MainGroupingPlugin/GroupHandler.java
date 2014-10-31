@@ -20,6 +20,7 @@ public class GroupHandler
 		{
 			GToDelete.sendMessage("The admin has left your Group");
 			GToDelete.sendMessage("Your Group is being dissolved");
+			GToDelete.removeAllMember();
 			activeGroups.remove(GToDelete);
 			return true;
 		}

@@ -30,7 +30,7 @@ public class PlayerEventListener implements Listener
 		{
 			if(curGroup.admin == p)
 			{
-				curGroup.member.remove(p);
+				curGroup.removeAllMember();
 				curGroup.sendMessage("The admin of the Group dissolved this group", ChatColor.AQUA);
 				mainPlugin.gHandler.deleteGroup(curGroup);
 				p.sendMessage(ChatColor.AQUA + "Group dissolved");

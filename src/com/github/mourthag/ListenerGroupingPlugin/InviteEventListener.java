@@ -6,7 +6,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 import com.github.mourthag.EventsGroupingPlugin.InviteEvent;
-import com.github.mourthag.MainGroupingPlugin.Group;
 import com.github.mourthag.MainGroupingPlugin.Main;
 
 public class InviteEventListener implements Listener{
@@ -24,11 +23,10 @@ public class InviteEventListener implements Listener{
 	{
 		Player source = e.getInviter();
 		Player target = e.getInvited();
-		Group srcGroup = e.getGroup();
 		
 		target.sendMessage(ChatColor.BLUE + source.getName() + " wants you to join your Group");
+		target.sendMessage(ChatColor.BLUE + "Accept his invite with /acceptinvite or decline it with /declineinvite");
 		
-		mainPlugin.getLogger().info("Hier");
 		mainPlugin.invHandler.addPlayer(target, e);
 	}
 }
