@@ -28,6 +28,7 @@ public class Main extends JavaPlugin
 	public void onDisable()
 	{
 		gHandler = null;
+		invHandler = null;
 		this.getLogger().info("Grouping Plugin disabled");
 		this.getLogger().info("Thanks for using");
 	}

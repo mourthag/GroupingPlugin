@@ -34,12 +34,14 @@ public class InviteAnswerCommand implements CommandExecutor{
 				{
 					invP.invite.setAnswer(true);
 					invP.invite.getGroup().addPlayer(p);
+					mainPlugin.invHandler.removePlayer(p);
 					p.sendMessage(ChatColor.BLUE + "Group joined");
 					return true;
 				}
 				if(cmd.getName().equalsIgnoreCase("declineInvite"))
 				{
 					invP.invite.setAnswer(false);
+					mainPlugin.invHandler.removePlayer(p);
 					invP.invite.getInviter().sendMessage(ChatColor.BLUE + p.getName() + " declined your Invite");
 				}
 			}

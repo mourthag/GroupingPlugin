@@ -22,25 +22,26 @@ public class InvitedPlayerHandler
 	{
 		removePlayer(p);
 		invitedPlayers.add(new InvitedPlayer(p, e));
-		mainPlugin.getLogger().info("Joho");
 	}
 	
 	public void removePlayer(Player p)
 	{
-		invitedPlayers.remove(p);
-		mainPlugin.getLogger().info("Test");
+		if(invitedPlayers.contains(p))
+		{			
+			invitedPlayers.remove(p);
+		}
 	}
 	
 	public InvitedPlayer findByPlayer( Player p)
 	{
-		mainPlugin.getLogger().info("Schleife");
-			for(InvitedPlayer curp: invitedPlayers)
+		for(InvitedPlayer curp: invitedPlayers)
+		{
+			if(curp.p == p)
 			{
-				if(curp.p == p)
-				{
-					return curp;
-				}
+				return curp;
 			}
+		}
+	
 		return null;
 	}
 }
