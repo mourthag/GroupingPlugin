@@ -5,6 +5,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import com.github.mourthag.MainGroupingPlugin.Group;
+import com.github.mourthag.MainGroupingPlugin.Main;
 
 public class InviteEvent extends Event
 {
@@ -14,7 +15,7 @@ public class InviteEvent extends Event
 	private boolean accept;
 	private static final HandlerList handlers = new HandlerList();
 	 
-	public InviteEvent(Player source, Player target, Group srcGroup)
+	public InviteEvent(Main main, Player source, Player target, Group srcGroup)
 	{
 		inviter = source;
 		invited = target;
