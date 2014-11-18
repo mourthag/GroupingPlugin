@@ -27,3 +27,7 @@ commands:
     aliases: [dInv]
     usage: /declineInvite
     description: Declines the current Invite
+  listGroup:
+    aliases: [list]
+    usage: /listGroup
+    description: Lists all members of your Group

@@ -38,7 +38,7 @@ public class GroupManCommand implements CommandExecutor
 				else
 				{
 					p.sendMessage(ChatColor.BLUE + "You are already in a Group!");
-					return false;
+					return true;
 				}
 			}
 			
@@ -49,10 +49,13 @@ public class GroupManCommand implements CommandExecutor
 				{
 					if(curGroup.admin == p)
 					{
-						curGroup.member.remove(p);
-						curGroup.sendMessage("The admin of the Group dissolved this group", ChatColor.AQUA);
-						mainPlugin.gHandler.deleteGroup(curGroup);
-						p.sendMessage(ChatColor.AQUA + "Group dissolved");
+						if(mainPlugin.gHandler.deleteGroup(curGroup))
+						{
+							p.sendMessage(ChatColor.AQUA + "Group dissolved");
+						}
+						else
+							p.sendMessage(ChatColor.BLUE + "Unknown Error occured please inform the admin");
+						
 						return true;
 					}
 					else
@@ -65,7 +68,7 @@ public class GroupManCommand implements CommandExecutor
 				else
 				{
 					p.sendMessage(ChatColor.BLUE + "You are not in a Group");
-					return false;
+					return true;
 				}
 			}
 			else if(cmd.getName().equalsIgnoreCase("invite"))
@@ -101,28 +104,28 @@ public class GroupManCommand implements CommandExecutor
 						else
 						{
 							p.sendMessage(ChatColor.BLUE + "You are not the admin");
+							return true;
 						}
 					}
 					else
 					{
 						p.sendMessage(ChatColor.BLUE + "You are in no Group");
-						return false;
+						return true;
 					}
 				}
 				else
 				{
 					p.sendMessage(ChatColor.BLUE + "Enter a player");
-					return false;
+					return true;
 				}
 			}
 			else
 			{
-				p.sendMessage(ChatColor.BLUE + "Command not implemented yet");
 				return false;
 			}
 		}
 		sender.sendMessage("You are no Player!");
-		return false;
+		return true;
 	}
 
 }

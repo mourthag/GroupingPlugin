@@ -1,13 +1,15 @@
 package com.github.mourthag.EventsGroupingPlugin;
 
 import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import com.github.mourthag.MainGroupingPlugin.Group;
 
-public class InviteEvent extends Event
+public class InviteEvent extends Event implements Cancellable
 {
+	private boolean cancelled;
 	private Player inviter;
 	private Player invited;
 	private Group invGroup;
@@ -49,5 +51,13 @@ public class InviteEvent extends Event
 	 
 	public static HandlerList getHandlerList() {
 	    return handlers;
+	}
+	
+	public boolean isCancelled() {
+		return cancelled;
+	}
+	
+	public void setCancelled(boolean cancel) {
+		cancelled = cancel;
 	}
 }

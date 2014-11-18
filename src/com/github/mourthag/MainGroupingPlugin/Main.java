@@ -41,5 +41,6 @@ public class Main extends JavaPlugin
 		getCommand("msgGroup").setExecutor(new GroupIntCommand(this));
 		getCommand("acceptInvite").setExecutor(new InviteAnswerCommand(this));
 		getCommand("declineInvite").setExecutor(new InviteAnswerCommand(this));
+		getCommand("listGroup").setExecutor(new GroupIntCommand(this));
 	}
 }

@@ -36,7 +36,7 @@ public class InvitedPlayerHandler
 	{
 		for(InvitedPlayer curp: invitedPlayers)
 		{
-			if(curp.p == p)
+			if(curp.p == p && curp.invite.isCancelled() != true)
 			{
 				return curp;
 			}

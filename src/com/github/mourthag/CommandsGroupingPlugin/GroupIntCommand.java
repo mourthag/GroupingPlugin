@@ -51,6 +51,25 @@ public class GroupIntCommand implements CommandExecutor {
 				else
 				{
 					p.sendMessage(ChatColor.BLUE + "You are in no Group");
+					return true;
+				}
+			}
+			if(cmd.getName().equalsIgnoreCase("listGroup"))
+			{
+				Group curGroup = mainPlugin.gHandler.findGroupByPlayer(p);
+				if(curGroup != null)
+				{
+					p.sendMessage(ChatColor.AQUA + "There are currently " + curGroup.member.size() + " members in your Group:");
+					for(Player curp: curGroup.member)
+					{
+						p.sendMessage(ChatColor.AQUA + curp.getName());
+					}
+					return true;
+				}
+				else
+				{
+					p.sendMessage(ChatColor.BLUE + "You are in no Group");
+					return true;
 				}
 			}
 		}
