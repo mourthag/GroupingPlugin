@@ -23,13 +23,13 @@ public class Group {
 		if(member.size() < 4)
 		{
 			member.add(p);
-			sendMessage(p.getName() + " joined the Group");
-			p.sendMessage(ChatColor.BLUE + "Use /p to send a message to your group");
+			sendMessage(p.getName() + " joined the party");
+			p.sendMessage(ChatColor.DARK_AQUA + "Use /p to send a message to your party");
 			return true;
 		}
 		else
 		{
-			p.sendMessage(ChatColor.BLUE + "Group is full");
+			p.sendMessage(ChatColor.DARK_AQUA + "party is full");
 			return false;
 		}
 	}
@@ -39,7 +39,7 @@ public class Group {
 		try
 		{
 			member.remove(p);
-			sendMessage(p.getName() + " left your Group");
+			sendMessage(p.getName() + " left your party");
 		}
 		catch(Exception e)
 		{
@@ -54,7 +54,7 @@ public class Group {
 		{
 			Player p = iter.next();
 			iter.remove();
-			sendMessage(p.getName() + " left your Group");
+			sendMessage(p.getName() + " left your party");
 		}
 	}
 	
@@ -62,7 +62,7 @@ public class Group {
 	//send Message to all Members
 	public void sendMessage(String message)
 	{
-		sendMessage(message, ChatColor.BLUE);
+		sendMessage(message, ChatColor.DARK_AQUA);
 	}
 	
 	public void sendMessage(String message, ChatColor color)

@@ -18,8 +18,8 @@ public class GroupHandler
 	{
 		if(activeGroups.contains(GToDelete))
 		{
-			GToDelete.sendMessage("The admin has left your Group");
-			GToDelete.sendMessage("Your Group is being dissolved");
+			GToDelete.sendMessage("The admin has left your Party");
+			GToDelete.sendMessage("Your Party is being dissolved");
 			GToDelete.removeAllMember();
 			activeGroups.remove(GToDelete);
 			return true;
@@ -34,7 +34,7 @@ public class GroupHandler
 	{
 		Group addedGroup = new Group(creator);
 		activeGroups.add(addedGroup);
-		addedGroup.sendMessage("Group created");
+		addedGroup.sendMessage("Party created");
 	}
 	
 	public Group findGroupByPlayer(Player p)

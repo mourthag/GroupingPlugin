@@ -29,27 +29,27 @@ public class InviteAnswerCommand implements CommandExecutor{
 			
 			if(invP != null)
 			{
-				if(cmd.getName().equalsIgnoreCase("acceptInvite"))
+				if(cmd.getName().equalsIgnoreCase("partyAccept"))
 				{
 					invP.invite.setAnswer(true);
 					invP.invite.getGroup().addPlayer(p);
 					invP.invite.setCancelled(true);
 					mainPlugin.invHandler.removePlayer(p);
-					p.sendMessage(ChatColor.BLUE + "Group joined");
+					p.sendMessage(ChatColor.DARK_AQUA + "Party joined");
 					return true;
 				}
-				if(cmd.getName().equalsIgnoreCase("declineInvite"))
+				if(cmd.getName().equalsIgnoreCase("partyDecline"))
 				{
 					invP.invite.setAnswer(false);
 					invP.invite.setCancelled(true);
 					mainPlugin.invHandler.removePlayer(p);
-					invP.invite.getInviter().sendMessage(ChatColor.BLUE + p.getName() + " declined your Invite");
+					invP.invite.getInviter().sendMessage(ChatColor.DARK_AQUA + p.getName() + " declined your Invite");
 					return true;
 				}
 			}
 			else
 			{
-				p.sendMessage(ChatColor.BLUE + "You dont have any open invites");
+				p.sendMessage(ChatColor.DARK_AQUA + "You dont have any open invites");
 				return false;
 			}
 		}

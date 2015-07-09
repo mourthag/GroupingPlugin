@@ -24,8 +24,9 @@ public class InviteEventListener implements Listener{
 		Player source = e.getInviter();
 		Player target = e.getInvited();
 		
-		target.sendMessage(ChatColor.BLUE + source.getName() + " wants you to join your Group");
-		target.sendMessage(ChatColor.BLUE + "Accept his invite with /acceptinvite or decline it with /declineinvite");
+		source.sendMessage(ChatColor.AQUA + "You invited player " + target.getName()+ " to your party");
+		target.sendMessage(ChatColor.DARK_AQUA + source.getName() + " wants you to join your Party");
+		target.sendMessage(ChatColor.DARK_AQUA + "Accept his invite with /partyAccept or decline it with /partyDecline");
 		
 		mainPlugin.invHandler.addPlayer(target, e);
 	}

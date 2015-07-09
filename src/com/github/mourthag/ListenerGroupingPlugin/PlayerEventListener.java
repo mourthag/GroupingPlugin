@@ -31,14 +31,14 @@ public class PlayerEventListener implements Listener
 			if(curGroup.admin == p)
 			{
 				curGroup.removeAllMember();
-				curGroup.sendMessage("The admin of the Group dissolved this group", ChatColor.AQUA);
+				curGroup.sendMessage("The admin of the party dissolved this party", ChatColor.AQUA);
 				mainPlugin.gHandler.deleteGroup(curGroup);
-				p.sendMessage(ChatColor.AQUA + "Group dissolved");
+				p.sendMessage(ChatColor.AQUA + "Party dissolved");
 			}
 			else
 			{
 				curGroup.removePlayer(p);
-				p.sendMessage(ChatColor.BLUE + "You left your Group");
+				p.sendMessage(ChatColor.DARK_AQUA + "You left your party");
 			}
 		}
 	}

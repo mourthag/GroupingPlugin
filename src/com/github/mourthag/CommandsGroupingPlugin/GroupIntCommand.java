@@ -26,7 +26,7 @@ public class GroupIntCommand implements CommandExecutor {
 		{
 			p = (Player)sender;
 			
-			if(cmd.getName().equalsIgnoreCase("msgGroup"))
+			if(cmd.getName().equalsIgnoreCase("partymsg"))
 			{
 				Group curGroup = mainPlugin.gHandler.findGroupByPlayer(p);
 				if(curGroup != null)
@@ -50,16 +50,16 @@ public class GroupIntCommand implements CommandExecutor {
 				}
 				else
 				{
-					p.sendMessage(ChatColor.BLUE + "You are in no Group");
+					p.sendMessage(ChatColor.DARK_AQUA + "You are in no party");
 					return true;
 				}
 			}
-			if(cmd.getName().equalsIgnoreCase("listGroup"))
+			if(cmd.getName().equalsIgnoreCase("partyList"))
 			{
 				Group curGroup = mainPlugin.gHandler.findGroupByPlayer(p);
 				if(curGroup != null)
 				{
-					p.sendMessage(ChatColor.AQUA + "There are currently " + curGroup.member.size() + " members in your Group:");
+					p.sendMessage(ChatColor.AQUA + "There are currently " + curGroup.member.size() + " members in your party:");
 					for(Player curp: curGroup.member)
 					{
 						p.sendMessage(ChatColor.AQUA + curp.getName());
@@ -68,8 +68,40 @@ public class GroupIntCommand implements CommandExecutor {
 				}
 				else
 				{
-					p.sendMessage(ChatColor.BLUE + "You are in no Group");
+					p.sendMessage(ChatColor.DARK_AQUA + "You are in no party");
 					return true;
+				}
+			}
+			if(cmd.getName().equalsIgnoreCase("partyKick"))
+			{
+				Group curGroup = mainPlugin.gHandler.findGroupByPlayer(p);
+				
+				if(curGroup != null)
+				{
+					if(curGroup.admin == p)
+					{
+						for(String player: args)
+						{
+							Player kick = mainPlugin.getServer().getPlayer(player);
+							if(kick != null)
+							{
+								curGroup.removePlayer(kick);
+								kick.sendMessage(ChatColor.DARK_AQUA + "You were kicked from your party");
+								p.sendMessage(ChatColor.DARK_AQUA + "You kicked player " + kick.getName() + " from your party!" );
+								return true;
+							}
+							else
+							{
+								p.sendMessage(ChatColor.DARK_AQUA + "Can't find the player " + player + " in your group");
+								return false;
+							}
+						}
+					}
+					else
+					{
+						p.sendMessage(ChatColor.DARK_AQUA + "You must be the admin of the party");
+						return false;
+					}
 				}
 			}
 		}

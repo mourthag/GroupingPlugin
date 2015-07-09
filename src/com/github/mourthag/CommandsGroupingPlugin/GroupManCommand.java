@@ -27,22 +27,36 @@ public class GroupManCommand implements CommandExecutor
 		{
 			p = (Player)sender;		
 			
-			if(cmd.getName().equalsIgnoreCase("createGroup"))
+			if(cmd.getName().equalsIgnoreCase("partyCreate"))
 			{
 				if(mainPlugin.gHandler.findGroupByPlayer(p) == null)
 				{
 					mainPlugin.gHandler.createGroup(p);
-					p.sendMessage(ChatColor.AQUA + "Group created, You are now the admin");
+					p.sendMessage(ChatColor.AQUA + "Party created, You are now the admin");
 					return true;
 				}
 				else
 				{
-					p.sendMessage(ChatColor.BLUE + "You are already in a Group!");
+					p.sendMessage(ChatColor.DARK_AQUA + "You are already in a Party!");
 					return true;
 				}
 			}
 			
-			else if(cmd.getName().equalsIgnoreCase("leaveGroup"))
+			else if(cmd.getName().equalsIgnoreCase("party"))
+			{
+				p.sendMessage(ChatColor.DARK_AQUA + "/party - Lists all Commands and their usage");
+				p.sendMessage(ChatColor.DARK_AQUA + "/partyCreate - Create a Party");
+				p.sendMessage(ChatColor.DARK_AQUA + "/partyInvite - Invite a player int your party");
+				p.sendMessage(ChatColor.DARK_AQUA + "/partyAccept - Accept the current Invite");
+				p.sendMessage(ChatColor.DARK_AQUA + "/partyDecline - Decline your current Invite");
+				p.sendMessage(ChatColor.DARK_AQUA + "/partyLeave - Leave your current Party");
+				p.sendMessage(ChatColor.DARK_AQUA + "/partymsg - Send a message to your party members (also /p)");
+				p.sendMessage(ChatColor.DARK_AQUA + "/partyKick - Kick a player of your party");
+				p.sendMessage(ChatColor.DARK_AQUA + "/partylist - Lists all current party members");
+				return true;
+			}
+			
+			else if(cmd.getName().equalsIgnoreCase("partyLeave"))
 			{
 				Group curGroup = mainPlugin.gHandler.findGroupByPlayer(p);
 				if(curGroup != null)
@@ -51,27 +65,27 @@ public class GroupManCommand implements CommandExecutor
 					{
 						if(mainPlugin.gHandler.deleteGroup(curGroup))
 						{
-							p.sendMessage(ChatColor.AQUA + "Group dissolved");
+							p.sendMessage(ChatColor.AQUA + "Party dissolved");
 						}
 						else
-							p.sendMessage(ChatColor.BLUE + "Unknown Error occured please inform the admin");
+							p.sendMessage(ChatColor.DARK_AQUA + "Unknown Error occured please inform the admin");
 						
 						return true;
 					}
 					else
 					{
 						curGroup.removePlayer(p);
-						p.sendMessage(ChatColor.BLUE + "You left your Group");
+						p.sendMessage(ChatColor.DARK_AQUA + "You left your Party");
 						return true;
 					}
 				}
 				else
 				{
-					p.sendMessage(ChatColor.BLUE + "You are not in a Group");
+					p.sendMessage(ChatColor.DARK_AQUA + "You are not in a party");
 					return true;
 				}
 			}
-			else if(cmd.getName().equalsIgnoreCase("invite"))
+			else if(cmd.getName().equalsIgnoreCase("partyInvite"))
 			{
 				if(args.length > 0)
 				{
@@ -92,30 +106,30 @@ public class GroupManCommand implements CommandExecutor
 								}
 								else if(inv == null)
 								{
-									p.sendMessage(ChatColor.BLUE + "Player " + player + " not found");
+									p.sendMessage(ChatColor.DARK_AQUA + "Player " + player + " not found");
 								}
 								else
 								{
-									p.sendMessage(ChatColor.BLUE + "Player " + inv.getName() + " is already in a Group");
+									p.sendMessage(ChatColor.DARK_AQUA + "Player " + inv.getName() + " is already in a Party");
 								}
 							}
 							return true;				
 						}
 						else
 						{
-							p.sendMessage(ChatColor.BLUE + "You are not the admin");
+							p.sendMessage(ChatColor.DARK_AQUA + "You are not the admin");
 							return true;
 						}
 					}
 					else
 					{
-						p.sendMessage(ChatColor.BLUE + "You are in no Group");
+						p.sendMessage(ChatColor.DARK_AQUA + "You are in no Party");
 						return true;
 					}
 				}
 				else
 				{
-					p.sendMessage(ChatColor.BLUE + "Enter a player");
+					p.sendMessage(ChatColor.DARK_AQUA + "Enter a player");
 					return true;
 				}
 			}

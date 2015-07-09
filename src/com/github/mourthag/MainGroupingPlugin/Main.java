@@ -17,7 +17,7 @@ public class Main extends JavaPlugin
 		new InviteEventListener(this);
 		gHandler = new GroupHandler();
 		invHandler = new InvitedPlayerHandler(this);
-		this.getLogger().info("Grouping Plugin v1.0.0 enabled");
+		this.getLogger().info("Grouping Plugin v1.1.0 enabled");
 		this.getLogger().info("Author: Mourthag");
 		setCommands();
 		this.reloadConfig();
@@ -35,12 +35,14 @@ public class Main extends JavaPlugin
 	
 	private void setCommands()
 	{
-		getCommand("createGroup").setExecutor(new GroupManCommand(this));
-		getCommand("leaveGroup").setExecutor(new GroupManCommand(this));
-		getCommand("invite").setExecutor(new GroupManCommand(this));
-		getCommand("msgGroup").setExecutor(new GroupIntCommand(this));
-		getCommand("acceptInvite").setExecutor(new InviteAnswerCommand(this));
-		getCommand("declineInvite").setExecutor(new InviteAnswerCommand(this));
-		getCommand("listGroup").setExecutor(new GroupIntCommand(this));
+		getCommand("party").setExecutor(new GroupManCommand(this));
+		getCommand("partyCreate").setExecutor(new GroupManCommand(this));
+		getCommand("partyLeave").setExecutor(new GroupManCommand(this));
+		getCommand("partyInvite").setExecutor(new GroupManCommand(this));
+		getCommand("partymsg").setExecutor(new GroupIntCommand(this));
+		getCommand("partyAccept").setExecutor(new InviteAnswerCommand(this));
+		getCommand("partyDecline").setExecutor(new InviteAnswerCommand(this));
+		getCommand("partyList").setExecutor(new GroupIntCommand(this));
+		getCommand("partyKick").setExecutor(new GroupIntCommand(this));
 	}
 }

@@ -3,31 +3,39 @@ version: 1.0.0
 main: com.github.mourthag.MainGroupingPlugin.Main
 author: Mourthag
 commands:
-  invite:
+  party:
+    aliases: [partyhelp]
+    usage: /party
+    description: List all commands for Groupingplugin
+  partyInvite:
     aliases: [inv]
-    usage: /invite [player]
-    description: Invite a player into your group
-  createGroup:
-    aliases: [crGroup]
-    usage: /createGroup
-    description: Creates a private Group for you and your Friends
-  leaveGroup:
-    aliases: [lvGroup]
-    usage: /leaveGroup
-    description: Leave the current group
-  msgGroup:
+    usage: /partyInvite [player]
+    description: Invite a player into your party
+  partyCreate:
+    aliases: [partycr]
+    usage: /partyCreate
+    description: Creates a private Party for you and your Friends
+  partyLeave:
+    aliases: [partylv]
+    usage: /partyLeave
+    description: Leave the current party
+  partymsg:
     aliases: [p]
-    usage: /msgGroup <message>
-    description: Sends a message to your Group members
-  acceptInvite:
-    aliases: [aInv]
-    usage: /acceptInvite
+    usage: /partymsg <message>
+    description: Sends a message to your party members
+  partyAccept:
+    aliases: [partyA]
+    usage: /partyAccept
     description: Accepts the current Invite
-  declineInvite:
-    aliases: [dInv]
+  partyDecline:
+    aliases: [partyD]
     usage: /declineInvite
     description: Declines the current Invite
-  listGroup:
+  partyList:
     aliases: [list]
-    usage: /listGroup
-    description: Lists all members of your Group
+    usage: /partyList
+    description: Lists all members of your Party
+  partyKick:
+    aliases: [pkick]
+    usage: /partyKick [player]
+    description: Kicks a player from your Party  
