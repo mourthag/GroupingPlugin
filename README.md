@@ -10,9 +10,6 @@ A Minecraft-Plugin to create and handle private Groups
   To leave the current group you can simply use /leavegroup and if you are the Admin of the group your group will be resolved.
   
 Features added soon:
-  Compability with xMoneycrafters RPG-Plugin to recieve and solve quests together
-  Some kind of a Class-Plugin with Mages, Warriors, etc. might be added too, to use group-intern Buffs
-  XP will be shared
   Maybe Items can be send within the group
   
 Im open to proposals from your side
