@@ -1,5 +1,5 @@
 name: GroupingPlugin
-version: 1.0.0
+version: 1.1.0
 main: com.github.mourthag.MainGroupingPlugin.Main
 author: Mourthag
 commands:
